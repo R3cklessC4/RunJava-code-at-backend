@@ -6,8 +6,14 @@ const fs = require('fs');
 const app = express();
 const port = 3030;
 
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  methods: 'POST',
+};
+
 app.use(express.text());
 app.use(cors());
+app.use(cors(corsOptions));
 
 app.post('/executeJava', async(req, res) => {
   let javaCode = req.body;
